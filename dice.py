@@ -6,37 +6,58 @@ import random
 def D4(dice):
   x=0
   while x < dice:
-    print(random.randint(1,4))
+    if x == dice - 1:
+      print(random.randint(1, 4))
+    else:
+      print(random.randint(1, 4), end=", ")
     x +=1
 def D6(dice):
   x=0
   while x < dice:
-    print(random.randint(1,6))
+    if x == dice - 1:
+      print(random.randint(1, 6))
+    else:
+      print(random.randint(1, 6), end=", ")
     x +=1
 def D8(dice):
   x=0
   while x < dice:
-    print(random.randint(1,8))
+    if x == dice - 1:
+      print(random.randint(1, 8))
+    else:
+      print(random.randint(1, 8), end=", ")
     x +=1
 def D10(dice):
   x=0
   while x < dice:
-    print(random.randint(1,10))
+    if x == dice - 1:
+      print(random.randint(1, 10))
+    else:
+      print(random.randint(1, 10), end=", ")
     x +=1
 def D12(dice):
   x=0
   while x < dice:
-    print(random.randint(1,12))
+    if x == dice - 1:
+      print(random.randint(1, 12))
+    else:
+      print(random.randint(1, 12, end=", ")
     x +=1
 def D20(dice):
   x=0
   while x < dice:
-    print(random.randint(1,20))
+    if x == dice - 1:
+      print(random.randint(1, 20))
+    else:
+      print(random.randint(1, 20), end=", ")
     x +=1
 def D100(dice):
   x=0
   while x < dice:
-    print(random.randint(1,100))
+    if x == dice - 1:
+      print(random.randint(1, 100))
+    else:
+      print(random.randint(1, 100), end=", ")
     x +=1
 
 #Input
@@ -85,4 +106,3 @@ while True:
 
 #Possibly clear some data, so the console isn't full of numbers after?
 #If multiple dice, seperate and annotate them neatly
-#How to arrange numbers differently, so it doesn't post in a series of line?
