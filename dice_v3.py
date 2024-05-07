@@ -18,38 +18,30 @@ def error():
   print("---------------------------------------------------------------------------")
   print()
 
+#Function to check input validity - Clean it up?
+def valid(dice):
+  if dice.count('d') == 1:
+    dice_split=dice.split('d')
+    if int(dice_split[0].isnumeric()) and int(dice_split[1].isnumeric()) > 0:  
+      return True
+    else:
+      error()
+  else:
+    error()
+
 #Nested loops to run through listed user input.
-#For repeated use
 while True:
-  #To loop back if a ValueError occurs
   while True:
     print("Which dice do you wish to roll?")
     dice=input("Example: 3d12, 5d15, 7d26 - Each set must be seperated by a comma.\n").lower()
     print()
-    #Split the input a list
     dice_list=dice.split(',')
     for dice in dice_list:
-      #Checks for only 1 character 'd'
-      if dice.count('d') == 1:
-        #Split the elements in list on 'd' to use the left and right integers
+      if valid(dice):
         dice_split=dice.split('d')
-        #Checks if the left and right integers are numeric and greater than 0
-        if int(dice_split[0].isnumeric()) and int(dice_split[1].isnumeric()) > 0:        
-          roll = []
-          try:
-            #Uses left split integer for number of dice
-            for die in range(0, int(dice_split[0])):
-              #Uses right split integer for number of dice faces
-              roll.append(random.randint(1, int(dice_split[1])))
-            print(f"D{dice_split[1]}: {', '.join(str(die) for die in roll)}")
-          #If a ValueError occurs in the integer elements, will loop back to input. ie; anything other than #d#
-          except ValueError:
-            error()
-        else:
-          error()
-      else:
-        error()
-    print()
-
-
-    #Code block has gotten very nested due to multiple input error checks
+        roll = []
+        for die in range(0, int(dice_split[0])):
+          roll.append(random.randint(1, int(dice_split[1])))
+        print(f"D{dice_split[1]}: {', '.join(str(die) for die in roll)}")
+      print()
+      break
