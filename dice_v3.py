@@ -22,8 +22,11 @@ def error():
 def valid(dice):
   if dice.count('d') == 1:
     dice_split=dice.split('d')
-    if int(dice_split[0].isnumeric()) and int(dice_split[1].isnumeric()) > 0:  
-      return True
+    if int(dice_split[0].isnumeric()) and int(dice_split[1].isnumeric()):
+      if int(dice_split[0]) and int(dice_split[1]) > 0:  
+        return True
+      else:
+        error()
     else:
       error()
   else:
@@ -44,4 +47,5 @@ while True:
           roll.append(random.randint(1, int(dice_split[1])))
         print(f"D{dice_split[1]}: {', '.join(str(die) for die in roll)}")
       print()
-      break
+
+# Is not writing multiple inputs to output
