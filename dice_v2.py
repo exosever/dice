@@ -32,3 +32,4 @@ for die in dice:
       result.append(number)
     results = str(result)
     print(die + ": " + f"{results[1:-1]}")
+#Needs loop for input errors
