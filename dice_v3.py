@@ -18,15 +18,12 @@ def error():
   print("---------------------------------------------------------------------------")
   print()
 
-#Function to check input validity - Clean it up?
+#Function to check input validity
 def valid(dice):
   if dice.count('d') == 1:
     dice_split=dice.split('d')
-    if int(dice_split[0].isnumeric()) and int(dice_split[1].isnumeric()):
-      if int(dice_split[0]) and int(dice_split[1]) > 0:  
-        return True
-      else:
-        error()
+    if int(dice_split[0].isnumeric()) and int(dice_split[1].isnumeric()) and int(dice_split[0]) > 0 and int(dice_split[1]) > 0:
+      return True
     else:
       error()
   else:
@@ -34,17 +31,17 @@ def valid(dice):
 
 #Nested loops to run through listed user input.
 while True:
-  while True:
-    print("Which dice do you wish to roll?")
-    dice=input("Example: 3d12, 5d15, 7d26 - Each set must be seperated by a comma.\n").lower()
+  print("Which dice do you wish to roll?")
+  dice=input("Example: 3d12, 5d15, 7d26 - Each set must be seperated by a comma.\n").lower()
+  print()
+  dice_list=dice.split(', ')
+  for dice in dice_list:
+    if valid(dice):
+      dice_split=dice.split('d')
+      roll = []
+      for die in range(0, int(dice_split[0])):
+        roll.append(random.randint(1, int(dice_split[1])))
+      print(f"D{dice_split[1]}: {', '.join(str(die) for die in roll)}")
     print()
-    dice_list=dice.split(', ')
-    for dice in dice_list:
-      if valid(dice):
-        dice_split=dice.split('d')
-        roll = []
-        for die in range(0, int(dice_split[0])):
-          roll.append(random.randint(1, int(dice_split[1])))
-        print(f"D{dice_split[1]}: {', '.join(str(die) for die in roll)}")
-      print()
+  
 #It now works with #d#, #d#. but what if #d#,#d# with no space?
