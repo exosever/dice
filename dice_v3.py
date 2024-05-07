@@ -14,7 +14,7 @@ print()
 #Error
 def error():
   print("---------------------------------------------------------------------------")
-  print("Error: Please check your input and use the #d# format seperated by a comma.")
+  print("Error "f"{dice}"": Please check your input and use the #d# format seperated by a comma.")
   print("---------------------------------------------------------------------------")
   print()
 
@@ -38,7 +38,7 @@ while True:
     print("Which dice do you wish to roll?")
     dice=input("Example: 3d12, 5d15, 7d26 - Each set must be seperated by a comma.\n").lower()
     print()
-    dice_list=dice.split(',')
+    dice_list=dice.split(', ')
     for dice in dice_list:
       if valid(dice):
         dice_split=dice.split('d')
@@ -47,5 +47,4 @@ while True:
           roll.append(random.randint(1, int(dice_split[1])))
         print(f"D{dice_split[1]}: {', '.join(str(die) for die in roll)}")
       print()
-
-# Is not writing multiple inputs to output
+#It now works with #d#, #d#. but what if #d#,#d# with no space?
