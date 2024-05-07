@@ -11,7 +11,7 @@ print("Dice rolling program by Joshua Harrison aka SeverX.")
 print("---------------------------------------------------")
 print()
 
-#Error
+#Error function
 def error():
   print("-------------------------------------------------------------------------------")
   print("Error "f"{dice}"": Please check your input and use the #d# format seperated by a comma.")
@@ -33,9 +33,11 @@ while True:
   print("Which dice do you wish to roll?")
   dice=input("Example: 3d12, 5d15, 7d26 - Each set must be seperated by a comma.\n").lower()
   print()
-  dice_list=dice.split(', ')
+  dice_list=dice.split(',')
   print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
   for dice in dice_list:
+    if dice.count(' ') == 1:
+      dice = dice[1:]
     if valid(dice):
       dice_split=dice.split('d')
       roll = []
@@ -45,5 +47,4 @@ while True:
   print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
   print()
   
-#It now works with #d#, #d#. but what if #d#,#d# with no space?
 #Format the outputs to look neater?
